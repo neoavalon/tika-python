@@ -166,7 +166,7 @@ if os.getenv('TIKA_LOG_FILE', 'tika.log'):
 log.setLevel(logging.INFO)
 
 Windows = True if platform.system() == "Windows" else False
-TikaVersion = os.getenv('TIKA_VERSION', '1.24')
+TikaVersion = os.getenv('TIKA_VERSION', '2.0.0')
 TikaJarPath = os.getenv('TIKA_PATH', tempfile.gettempdir())
 TikaFilesPath = tempfile.gettempdir()
 TikaServerLogFilePath = log_path
@@ -179,7 +179,7 @@ ServerEndpoint = os.getenv(
     'TIKA_SERVER_ENDPOINT', 'http://' + ServerHost + ':' + Port)
 Translator = os.getenv(
     'TIKA_TRANSLATOR',
-    "org.apache.tika.language.translate.Lingo24Translator")
+    "org.apache.tika.language.translate.impl.Lingo24Translator")
 TikaClientOnly = os.getenv('TIKA_CLIENT_ONLY', False)
 TikaServerClasspath = os.getenv('TIKA_SERVER_CLASSPATH', '')
 TikaStartupSleep = float(os.getenv('TIKA_STARTUP_SLEEP', 5))
