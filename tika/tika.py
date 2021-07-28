@@ -648,10 +648,10 @@ def startServer(tikaServerJar, java_path = TikaJava, java_args = TikaJavaArgs, s
     # setup command string
     cmd_string = ""
     if not config_path:
-        cmd_string = '%s %s -cp "%s" org.apache.tika.server.TikaServerCli --port %s --host %s &' \
+        cmd_string = '%s %s -cp "%s" org.apache.tika.server.core.TikaServerCli --port %s --host %s &' \
                      % (java_path, java_args, classpath, port, host)
     else:
-        cmd_string = '%s %s -cp "%s" org.apache.tika.server.TikaServerCli --port %s --host %s --config %s &' \
+        cmd_string = '%s %s -cp "%s" org.apache.tika.server.core.TikaServerCli --port %s --host %s --config %s &' \
                      % (java_path, java_args, classpath, port, host, config_path)
 
     # Check that we can write to log path
@@ -688,7 +688,7 @@ def startServer(tikaServerJar, java_path = TikaJava, java_args = TikaJavaArgs, s
     while try_count < TikaStartupMaxRetry:
         with open(tika_log_file_path, "r") as tika_log_file_tmp:
             # check for INFO string to confirm listening endpoint
-            if "Started Apache Tika server at" in tika_log_file_tmp.read():
+            if "Started Apache Tika server" in tika_log_file_tmp.read():
                 is_started = True
             else:
                 log.warning("Failed to see startup log message; retrying...")
